@@ -41,6 +41,10 @@ class Generator
     end
   end
 
+  def reject(predicate)
+    filter(->(r) {not predicate.call(r)})
+  end
+
   def inspect
     "Generator of " + @description
   end
