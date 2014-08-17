@@ -70,7 +70,33 @@ module Generators
     end
 
     def time(no_later_than=Time.now)
-      pos_int.map(->(i) { no_later_than - i })
+      pos_int.map(->(i) {
+        r = no_later_than - i
+
+        def r.no_later_than=(val)
+          @no_later_than = val
+        end
+
+        def r.no_later_than
+          @no_later_than
+        end
+
+        # This doesn't work. How do I capture this local
+        # variable in a place where r can get it?
+        def r.shrinkable?
+          self < no_later_than
+        end
+        def r.shrink
+          diff = no_later_than - self
+          if (diff <= 10)
+            no_later_than
+          else
+            no_later_than - (diff / 2)
+          end
+        end
+        r.no_later_than = no_later_than
+        r
+       })
     end
 
     def any_number_of(inner, max=100)
