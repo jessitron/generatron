@@ -32,3 +32,5 @@ slowly (check the commit history for the evolution): [github.com/jessitron/geral
 The ScalaCheck version of this talk: [ScalaCheck with Prisoners
 Dilemma](http://github.com/jessitron/scalacheck-prisoners-dilemma)
 
+[Video from Windy City Rails](https://www.windycityrails.org/videos/2014/#14)
+
